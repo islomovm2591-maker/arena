@@ -5,14 +5,29 @@ body{margin:0;background:#07080f;color:#fff;font-family:system-ui,-apple-system,
 canvas#c{width:100%;aspect-ratio:16/9;display:block;border-radius:10px;background:#111}
 #pad{display:none}
 @media (pointer:coarse){
-  #wrap{width:min(calc(100vw - 12px),calc((100vh - 130px) * 16 / 9))}
-  #pad{display:flex;justify-content:space-between;width:min(calc(100vw - 12px),calc((100vh - 130px) * 16 / 9));margin-top:8px}
+  body{padding:0;min-height:100vh;min-height:100dvh;justify-content:flex-start}
+  #wrap{width:min(100vw,calc(100dvh * 16 / 9));margin-top:0}
+  #pad{display:flex;position:fixed;left:0;right:0;bottom:max(8px,env(safe-area-inset-bottom));padding:0 2vw;justify-content:space-between;pointer-events:none;z-index:20}
+  #pad .g{gap:1.2vw}
+  #pad button{pointer-events:auto;width:min(11.5vw,62px);height:min(11.5vw,62px);font-size:min(5vw,24px);background:#161b36d9;border-radius:14px}
 }
+@media (pointer:coarse) and (orientation:portrait){
+  #wrap{margin-top:max(8px,env(safe-area-inset-top))}
+  #rot{display:block}
+}
+@media (pointer:coarse) and (orientation:landscape){
+  body{justify-content:center}
+  #pad{bottom:max(10px,env(safe-area-inset-bottom));padding:0 max(14px,env(safe-area-inset-left))}
+  #pad button{width:62px;height:62px;font-size:24px;background:#161b3699}
+  #pad button.on{background:#ff9f1ccc}
+}
+#rot{display:none;text-align:center;color:#ffb703;font-size:15px;padding:14px 16px;line-height:1.5}
 #pad .g{display:flex;gap:8px}
 #pad button{width:56px;height:56px;border-radius:16px;border:1px solid #ffffff2a;background:#161b36;color:#fff;font-size:22px}
 #pad button.on{background:#ff9f1c}
 body:fullscreen{padding:0;background:#000}
 body:fullscreen #wrap{width:min(100vw,calc(100vh * 16 / 9))}
+@media (pointer:coarse){body:fullscreen #wrap{width:min(100vw,calc(100dvh * 16 / 9))}}
 body:fullscreen canvas#c{border-radius:0}
 #fs{position:absolute;right:8px;bottom:8px;padding:3px 9px;font-size:16px;background:#ffffff22;color:#fff;border:0;border-radius:8px;cursor:pointer;z-index:5}
 #ov{position:absolute;inset:0;font-size:calc(var(--u) * 15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5em;padding:.9em;text-align:center;background:linear-gradient(#0a0c1af2,#0d1126f7);border-radius:10px;overflow:hidden}

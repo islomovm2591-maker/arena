@@ -183,6 +183,6 @@ function resize() {
   cv.width = Math.round(r.width * d); cv.height = Math.round(r.width * 9 / 16 * d); document.documentElement.style.setProperty('--u', (r.width / 960) + 'px');
 }
 window.addEventListener('resize', resize); document.addEventListener('fullscreenchange', function () { setTimeout(resize, 80); });
-function toggleFS() { if (document.fullscreenElement) document.exitFullscreen(); else document.body.requestFullscreen().catch(function () {}); }
+function toggleFS() { if (document.fullscreenElement) document.exitFullscreen(); else document.body.requestFullscreen().then(function () { try { screen.orientation.lock('landscape').catch(function () {}); } catch (e) {} }).catch(function () {}); }
 document.getElementById('fs').onclick = toggleFS;
 resize(); showMain(); requestAnimationFrame(loop);
