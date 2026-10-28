@@ -8,7 +8,7 @@ var SPD = {orb:"Uchuvchi shar", wave:"Yer bo'ylab to'lqin", dash:"Tez zarba", te
            slam:"Yer zarbasi", buff:"Kuchaytirish", heal:"Davolash", pull:"Tortib olish", rain:"Osmondan yomg'ir"};
 var UTD = {beam:"Katta nur", barrage:"O'qlar yomg'iri", quake:"Zilzila", dive:"Sakrab tushish", blitz:"Tezkor zarbalar"};
 var WR = {none:0, dagger:6, sword:20, staff:30, axe:18, hook:12, anchor:24, cannon:4, fan:6, harpoon:32};
-var STAGES = ["Soya qishlog'i", "Kema palubasi"];
+var STAGES = ["Soya qishlog'i", "Kema palubasi", "Cho'l xarobasi"];
 
 // [nom, guruh, tana rangi, aksent, bosh kiyim, qurol, hp, tezlik, kuch, maxsus, ult, hujum rangi, maxsus nomi, ult nomi]
 var RAW = [

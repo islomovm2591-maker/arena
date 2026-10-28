@@ -8,8 +8,8 @@ canvas#c{width:100%;aspect-ratio:16/9;display:block;border-radius:10px;backgroun
 #pad button{width:56px;height:56px;border-radius:16px;border:1px solid #ffffff2a;background:#161b36;color:#fff;font-size:22px}
 #pad button.on{background:#ff9f1c}
 body:fullscreen{padding:0;background:#000}
-body:fullscreen #wrap{width:min(100vw,calc(100vh * 16 / 9))}
-body:fullscreen canvas#c{border-radius:0}
+body:fullscreen #wrap{width:100vw;height:100vh}
+body:fullscreen canvas#c{border-radius:0;height:100%;aspect-ratio:auto}
 #fs{position:absolute;right:8px;bottom:8px;padding:3px 9px;font-size:16px;background:#ffffff22;color:#fff;border:0;border-radius:8px;cursor:pointer;z-index:5}
 #ov{position:absolute;inset:0;font-size:calc(var(--u) * 15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5em;padding:.9em;text-align:center;background:linear-gradient(#0a0c1af2,#0d1126f7);border-radius:10px;overflow:hidden}
 #ov[hidden]{display:none}
@@ -38,11 +38,14 @@ body:fullscreen canvas#c{border-radius:0}
 .mv b{color:#ffb703}
 .help{font-size:.9em;text-align:left;line-height:1.6;color:#d6dcff}
 .help b{color:#ffb703}
+#pse{position:absolute;right:48px;bottom:8px;padding:3px 9px;font-size:16px;background:#ffffff22;color:#fff;border:0;border-radius:8px;cursor:pointer;z-index:5;display:none}
+body.ing #pse{display:block}
+#ov.glass{background:rgba(6,8,20,.74)}
 /* telefon qoidalari — eng oxirida bo'lishi shart */
 #rot{display:none;text-align:center;color:#ffb703;font-size:15px;padding:14px 16px;line-height:1.5}
 @media (pointer:coarse){
   body{padding:0;min-height:100vh;min-height:100dvh;justify-content:flex-start}
-  #wrap{width:min(100vw,calc(100dvh * 16 / 9));margin-top:0}
+  #wrap{width:100vw;margin-top:0}
   #pad{display:flex;position:fixed;left:0;right:0;bottom:max(8px,env(safe-area-inset-bottom));padding:0 2vw;justify-content:space-between;pointer-events:none;z-index:20}
   #pad .g{gap:1.2vw}
   #pad button{pointer-events:auto;width:min(11.5vw,62px);height:min(11.5vw,62px);font-size:min(5vw,24px);background:#161b36d9;border-radius:14px}
@@ -53,10 +56,15 @@ body:fullscreen canvas#c{border-radius:0}
 }
 @media (pointer:coarse) and (orientation:landscape){
   body{justify-content:center}
-  #pad{bottom:max(10px,env(safe-area-inset-bottom));padding:0 max(14px,env(safe-area-inset-left))}
+  #wrap{width:100vw;height:100vh;height:100dvh}
+  canvas#c{height:100%;aspect-ratio:auto;border-radius:0}
+  #pad{bottom:max(10px,env(safe-area-inset-bottom));padding:0 max(14px,env(safe-area-inset-left)) 0 max(14px,env(safe-area-inset-right))}
   #pad button{width:56px;height:56px;font-size:22px;background:#161b3680;border-color:#ffffff30}
   #pad button.on{background:#ff9f1ccc}
+  #ov{border-radius:0}
 }
-@media (pointer:coarse){body:fullscreen #wrap{width:min(100vw,calc(100dvh * 16 / 9))}}
 body.menu #pad{display:none!important}
-@media (pointer:coarse){body:not(.menu) #fs{left:50%;right:auto;transform:translateX(-50%);opacity:.6}}
+@media (pointer:coarse){
+  body:not(.menu) #fs{left:calc(50% + 4px);right:auto;transform:none;opacity:.6}
+  body:not(.menu) #pse{left:calc(50% - 46px);right:auto;opacity:.6}
+}

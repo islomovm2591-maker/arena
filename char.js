@@ -29,7 +29,7 @@ var POSEACT = {punch:1, punch2:1, kick:1, air:1, block:1, hurt:1, cast:1, ult:1,
 
 function getPose(f) {
   var a = f.act, p = f.ad > 0 ? Math.min(1, f.at / f.ad) : 0, T = G.t;
-  if (a == 'blitz') a = 'dash';
+  if (a == 'blitz' || a == 'roll') a = 'dash';
   if (a == 'dive') a = f.ph == 2 ? 'air' : 'jump';
   if (POSEACT[a]) return keys(KS_[a], a == 'jump' ? 0 : p);
   if (a == 'ko' || a == 'down') return keys(KS_.ko, Math.min(1, f.at / .3));
