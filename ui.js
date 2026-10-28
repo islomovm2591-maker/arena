@@ -154,6 +154,7 @@ ov.addEventListener('click', function (e) {
 
 // ----- Chizish va sikl -----
 function render() {
+  document.body.classList.toggle('menu', !ov.hidden);
   x.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
   if (!G.F.length) { drawStage(Math.floor(G.t / 20) % 2, {cx:W / 2 + Math.sin(G.t * .3) * 40, z:1}); if (PV.run && !ov.hidden) drawPrev(); return; }
   x.save();
